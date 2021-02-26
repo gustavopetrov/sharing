@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <%- include('partials/head') %>
+      <link rel="stylesheet" href="/stylesheets/productPage.css">
+      <title><%= product.name %> - Dietetica</title>
+    </head> 
+    <body>
+        <%- include('partials/header.ejs') %>
+        <h2 class="subtitle"><%= product.name %></h1>
+        <section>
+        
+          <article class="product">
+            <div class="imgProduct">
+                <div class="imageProduct-flex">
+                    <img class="productPh" src="/img/products/<%= product.images %>" alt="imagen producto">
+                    <div class="sliderDots">
+                        <a href="#" class="sliderDot"></a>
+                        <a href="#" class="sliderDot"></a>
+                        <a href="#" class="sliderDot"></a>
+                        <a href="#" class="sliderDot"></a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="desc">
+                <h1 class="productTitle"><%= product.name %></h1>
+                <p class="price">$ <%= product.price %></p>
+                <p class="format">por Kilogramo</p>
+                <p class="description"> <%= product.descr %></p>
+
+            </div>
+            <div class="div-fa-star">
+              <a href="/users/add-favoritos/<%=product.idproducts%>" class="a-fa-star"><i class="fas fa-star"></i></a>
+            </div>
+            <form action="/cart/add-to-cart" method="POST" class="btn-add-cart">
+              <input type="hidden" name="id" value="<%=product.idproducts%>">
+              <button type="submit" class="btn btn-outline-success" >Agregar al carrito</button>
+            </form>
+              
+            
+            <% if(typeof user != 'undefined'){ %>
+              <% if(user.admin == 1) { %>
+                <div>
+                  <a href="/products/<%=product.idproducts%>/edit" class="a-btn-act"><button type="button" class="btn btn-outline-success"><i class="fas fa-edit btn-edit"></i></button></a>
+                </div>
+    
+                <form action="/products/<%=product.idproducts%>/delete?_method=DELETE" method="POST" >
+                  <button type="submit" class="btn btn-outline-success"><i class="fas fa-trash-alt btn-delete"></i>
+                </form>
+              <% } %>
+            <% } %>
+                
+          </article>
+          
+          
+      
+            
+      
+
+
+
+    <!--====== Footer =======-->
+    <%- include('partials/footer') %>
+    <!--===== End Footer =======-->
+
+    <%- include('partials/bootstrap-jq-poppers') %>
+  </body>
+
+</html>

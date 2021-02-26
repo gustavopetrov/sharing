@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/styleRegisterLogin.css">
+    <title>Iniciar Sesión</title>
+    
+</head>
+<body>
+        <!-- Partials Header -->
+    <%- include('partials/header.ejs') %>
+        <!-- ===============   -->
+    <section class="sec_form_register">
+        <form method="POST" class="div-form-register">
+            <div class="div_form_register">
+                <h4 class="h4_menu_register">
+                    <a class="a-form-register" href="#">Iniciar Sesión</a>
+                </h4>
+                <h4 class="h4_menu_register">
+                  <a class="a-form-register off-btn" href="/users/register">Registrarse</a>
+                </h4>
+            </div>
+            <form action="/users/login" method="POST" class="form_register_date">
+                <!-- <div class="div_form_input"> -->
+                <div class="group_form_register">
+                    <input type="text" class="field_form_register email" name="email" id="email"><span class="barra"></span>
+                    <label class="label_form_register">Email</label><br>
+                </div>
+                <div class="group_form_register">
+                    <input type="password" class="field_form_register pw" name="password" id="pw" ><span class="barra"></span>
+                    <label class="label_form_register">Contraseña</label><br>
+                </div>
+                <br>
+                <div class="checkbox-btn">
+                    Recordame
+                    <input type="checkbox" name="recordame" ><br>
+                </div>
+                <!-- validaciones frontEnd -->
+                    <div class="errors">
+                        <p class="p-errors"></p>
+                    </div>
+                <!-- validaciones frontEnd -->
+
+                <!-- validaciones backEnd -->
+                <% if (typeof errors != 'undefined'){ %>   
+                    <ul class="ul_error">
+                    <% for (let i = 0; i < errors.length; i++) { %>
+                        <li class="li_error"><%= errors[i].msg %></li>
+                    <% } %>
+                    </ul>
+                <% } %>
+                <!-- validaciones backEnd -->
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="center_content_btn_register">
+                    <input type="submit" class="btn btn-green" value="Ingresar">
+                </div>
+            </form>
+        </form>
+    </section>
+    
+    <!--====== Footer =======-->
+    <%- include('partials/footer') %>
+    <!--===== End Footer =======-->
+    <script src="/javascripts/validation-login.js"></script>
+    <%- include('partials/bootstrap-jq-poppers') %>
+</body>
+</html>

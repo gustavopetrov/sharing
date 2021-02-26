@@ -1,0 +1,18 @@
+.box_1, .box_2 {
+    width: 250px;
+    height: 250px;
+    margin: 14px auto;
+    font-size: 16px;
+    text-align: center;
+}
+
+.box_1 {
+    background-color: lightgreen;
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+.box_2 {
+    background-color: lightsalmon;
+    position: relative;
+}

@@ -1,0 +1,125 @@
+html{    
+    background-color: #1BA1AD;
+    box-sizing: border-box;
+    /* position: relative; */
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+
+
+    /* con grid */
+    display: grid;
+    place-items: center;
+
+    /* con flex */
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+ /*tengo algun error que aun no identifique
+ al tratar de hacer los semi-círculos adicionales*/
+/* html::after,
+html::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;    
+    width: 300px;
+    height: 200px;
+    background-color: #20AAB5;
+    z-index: -1;   
+} */
+
+html::after {
+    top: -425px;
+    left: -425px;
+}
+
+html::before {
+    bottom: -425px;
+    right: -425px;    
+}
+
+.card {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 18px;
+    width: 270px;
+    height: 350px;
+    /* background-size: (% de espacio a ocupar)100% 144px(tamaño max); */
+    background-color: whitesmoke;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card__header{    
+    background-image: url(../assets/images/bg-pattern-card.svg);
+    position: relative;
+    height: 120px;
+    
+   
+}
+
+.card__image {
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border: 4px solid whitesmoke;
+    background-color: whitesmoke;
+
+    /* Posicionarlo sin FLEX:
+    como esta posicionado absolute, podemos darle
+    left: 50%; -> corresponde al contenedor padre
+    transform: translateX(-50%); -> el 50% corresponde al elemento
+    así se centra sin FLEX
+    */
+
+    /* Centrar la IMAGEN con FLEX 
+    display: flex;
+    justify-content: center; */
+}
+
+.card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    padding-top: 25px;
+}
+
+.card__text {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.card__text--light{
+    color: gray;
+    font-weight: normal;
+}
+
+.card__footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+}
+
+.card__stats {
+    width: 100%;
+    text-align: center;
+}
+
+.card__number{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    line-height: 1.5;
+}
+.card__footer .card__stats span {
+    font-size: 12px;
+}

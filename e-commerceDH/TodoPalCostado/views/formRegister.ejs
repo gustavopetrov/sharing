@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/styleRegisterLogin.css">
+    <title>Registro</title>
+</head>
+<body>
+        <!-- Partials Header -->
+    <%- include('partials/header.ejs') %>
+        <!-- ===============   -->
+    
+    <section class="sec_form_register">
+        <!-- validaciones frontEnd -->
+        <div class="errors">
+                
+        </div>
+        <!-- validaciones frontEnd -->
+        <form method="POST" class="div-form-register" enctype="multipart/form-data">
+            <div class="div_form_register">
+                <h4 class="h4_menu_register">
+                    <a class="a-form-register off-btn" href="/users/login">Iniciar Sesión</a>
+                </h4>
+                <h4 class="h4_menu_register">
+                    <a class="a-form-register" href="#">Registrarse</a>
+                </h4>
+            </div>
+            <form  action="/users/register" method="POST" class="form_register_date">
+                <div class="group_form_register">
+                    <input type="text" class="field_form_register" id="name" name="name"><span class="barra"></span>
+                    <label>Nombre</label><br>
+                </div>
+                <div class="group_form_register">
+                    <input type="text" class="field_form_register" name="last_name" id="last_name"><span class="barra"></span>
+                    <label>Apellido</label><br>
+                </div>
+                <div class="group_form_register">
+                    <input type="email" class="field_form_register" name="email" id="email"><span class="barra"></span>
+                    <label>Email</label><br>
+                </div>
+                <div class="group_form_register">
+                    <input type="password" class="field_form_register" id="pw" name="password"><span class="barra"></span>
+                    <label class="label_form_register">Contraseña</label class="label_form_register"><br>
+                </div>
+                <div class="group_form_register">
+                    <input type="password" class="field_form_register" id="Cpw" name="confirmPassword"><span class="barra"></span>
+                    <label class="label_form_register">Confirmar contraseña</label>
+                </div>
+                <div>
+                    <input type="file" class="field_form_register" id="img" name="avatar">
+                    <label class="lb-avatar">Avatar</label><br>
+                </div>
+
+                <% if (typeof errors != 'undefined'){ %>
+                    <p style="color:red">ERROR</p>
+                    <ul>
+                    <% for (let i = 0; i < errors.length; i++) { %>
+                        <li>
+                            <%= errors[i].msg %>
+                        </li>
+                    <% } %>
+                    </ul>
+                <% } %>
+        
+                <div class="center_content_btn_register">
+                    <input type="submit" class="btn btn-green" value="Registrar">
+                </div>
+            </form>
+        </form>
+    </section>    
+
+
+
+    <!--====== Footer =======-->
+    <%- include('partials/footer') %>
+    <!--===== End Footer =======-->
+    <script src="/javascripts/validation-register.js"></script>
+
+
+    <%- include('partials/bootstrap-jq-poppers') %>
+</body>
+</html>

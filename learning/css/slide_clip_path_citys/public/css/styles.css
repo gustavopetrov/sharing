@@ -1,0 +1,23 @@
+.slide {
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.slide img {
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    width: 100%;
+    /* object-fit: scale-down; */
+    /* transform: scale(3.5); */
+}
+
+.img__animate{
+    animation: slide 3s forwards;
+}
+@keyframes slide {
+    0%,85% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) }
+    100% { clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%) }        
+}
+

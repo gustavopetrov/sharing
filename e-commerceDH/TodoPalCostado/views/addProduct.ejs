@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Carga de productos (ADMIN)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;400&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            font-family: 'Muli', sans-serif;
+        }
+         .section-add-product{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+         }
+         .add-product-header {
+            width: 100%;
+            margin-top: 30px;
+            background-color: #59ecbba6;
+            font-size: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: 10px;
+            box-shadow: 0px 0px 5px black;
+            /* margin-bottom: 40px; */
+         }
+         .form-titulo{
+            text-align: center;
+         }
+
+         .div-form-add-product{
+            padding-top: 20px;
+            margin-top: 30px;
+            width: 100%;
+            height: 800px;
+            background-color:#E5E5E5 ;
+            font-size: 18px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px black;
+            
+         }
+         .form-add-product{
+             width: 100%;
+             display: flex;
+             flex-direction: column;
+             /* justify-content: center; */
+             /* align-items: center; */
+         }
+         .addproduct-type{
+            /* min-width: 250px; */
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+         }
+         .label-add-product{
+             line-height: 40px;
+             font-size: 20px;
+         }
+         .input-1{
+             width: 80%;
+             height: 30px;
+             margin-top: 7px;
+             margin-bottom: 7px;
+             border-radius: 5px;
+             border-style: none;
+         }
+         textarea{
+            width: 80%;
+            resize: none;
+         }
+         .btn-enviar{
+             margin: auto;
+             padding: 10px 40px;
+             border-radius: 5px;
+             background: #6be0a0;
+             color: rgb(97, 97, 97) ;
+         }
+         @media(max-width: 425px){
+            .section-add-product{
+                width: 100vh;
+            }
+            .div-form-add-product{
+                width: 300px;
+            }
+
+         }
+         @media(max-width: 1024px){
+            .section-add-product{
+                width: 60%;
+            }
+
+         }
+         @media(min-width: 1024px){
+            .section-add-product{
+                width: 40%;
+            }
+
+         }
+
+        
+      </style>
+</head>
+<body>
+    <!-- ====== Header====== -->
+    <%- include('partials/header.ejs') %>
+    <!-- =================== -->
+    <% if (typeof errors != 'undefined'){%>
+        <p style="color:red">Error!</p>
+        <ul>
+            <% for(let i = 0; i < errors.length; i++){ %>
+                <li>
+                    <%= errors[i].msg%>
+                </li>
+            <% } %>
+        </ul>        
+    <% } %>
+   <section class="section-add-product">
+        <div class="add-product-header">
+            <h3 class="form-titulo">Formulario de carga de productos</h3>
+        </div>
+         
+
+        <div class="div-form-add-product">    
+            <form class="form-add-product" class="style-1" action="/products/create" method="POST"> 
+                <div class="addproduct-type">       
+                    <label for="name" class="label-add-product"> Ingresar nombre de producto: </label>
+                    <input type="text" id="name" name="name" placeholder="Ingresar producto" class="input-1 name" >
+                </div>
+                <div class="addproduct-type">
+                    <label for="price" class="label-add-product"> Precio del producto:</label>
+                    <input type="text" id="price" name="price" placeholder="Ingresar precio " class="input-1 price">
+                </div>
+                <div class="addproduct-type">
+                    <label for="category" class="label-add-product"> Categoria:</label>
+                    <select id="category" name="category" class="input-1 category">
+                        <option value="">Elige una opción</option>
+                        <option value="1">Frutos Secos</option>
+                        <option value="2">Frutas Desecadas</option>
+                        <option value="3">Hamburguesas</option>
+                    </select>
+                </div>
+                <div class="addproduct-type">
+                    <label for="detail" class="label-add-product"> Detalle:</label>
+                    <select name="detail" id="detail" class="input-1 detail">
+                        <option value="">Elige una opción</option>
+                        <option value="oferta">En oferta</option>
+                        <option value="mas-vendido">Mas vendido</option>
+                    </select>
+                </div>
+                <div class="addproduct-type">
+                    <label class="label-add-product"> Descrición de producto:</label>
+                    <textarea class="descr" name="descr" id="descr" cols="30" rows="10"></textarea>
+                </div>
+                <div class="addproduct-type">
+                    <input type="file" class="label-add-product img" name="images" id="images">
+                </div>
+                <div class="addproduct-type">
+                    <button type="submit" class="btn-enviar">Guardar producto</button>
+                </div>
+            </form>
+        </div>
+   </section>
+    <!-- validaciones frontEnd -->
+    <div class="errors">
+                
+    </div>
+    <!-- validaciones frontEnd -->
+   <!--====== Footer =======-->
+   <%- include('partials/footer') %>
+   <!--===== End Footer =======-->
+   <script src="/javascripts/validation-createProduct.js"></script>
+   <%- include('partials/bootstrap-jq-poppers') %>
+        
+</body>
+</html>

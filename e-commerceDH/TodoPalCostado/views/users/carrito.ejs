@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <!-- <link rel="stylesheet" href="css-carrito2.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/carrito.css">
+    <title>Carrito de compras</title>
+    <!-- <script src="https://kit.fontawesome.com/5c6145b7dd.js" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <!-- ====== Header====== -->
+    <%- include('../partials/header.ejs') %>
+    <!-- =================== -->
+    
+    <section>
+      <form action="/cart/finalizar-compra" class="form" method="POST">
+        <div class="container-cart">
+          <div class="heading">
+            <% if( typeof cart == []) { %>
+            <h1>
+              <span class="shopper">c</span> Tu carrito esta vacío
+            </h1>
+            <% } else { %>
+            <h1>
+              <span class="shopper">c</span> Carrito de compras
+            </h1>
+            
+  
+          
+          <div class="cart2 transition is-open">
+            
+            
+            <div class="table">
+              
+              <div class="layout-inline row th">
+                <div class="col col-pro nav-pro">Producto</div>
+                <div class="col col-price nav-price">Precio</div>
+                <div class="col col-qty nav-qty">QTY</div>
+                <div class="col nav-total">Total</div>
+              </div>
+                <% for(var i = 0; i < cart.length; i++){ %>
+                <div class="layout-inline row">
+                
+                  <div class="col col-pro layout-inline">
+                    <img class="img-product" src="/img/products/<%=cart[i].product.images%>" alt="" />
+                    <p class="date"><%=cart[i].product.name%></p>
+                  </div>
+                
+                  <div class="col col-price col-numeric price align-center ">
+                    <p class="price-product"><%=cart[i].product.price%></p>
+                  </div>
+        
+                  <div class="col col-qty layout-inline">
+                    <a href="/cart/qty-minus/<%=cart[i].FK_products_id%>" class="qty qty-minus">-</a>
+                      <input type="numeric" name="QTY" value="<%=cart[i].quantity%>" class="qty-input"/>
+                    <a href="/cart/qty-plus/<%=cart[i].FK_products_id%>" class="qty qty-plus">+</a>
+                  </div>
+                
+                  <div class="col col-total col-numeric">              
+                    <p class="total-product"><%=cart[i].price%></p>
+                  </div>
+                  <div>
+                    <a href="/cart/remove-from-cart/<%=cart[i].FK_products_id%>">
+                      <i class=" col fas fa-times-circle"></i>
+                    </a>
+                  </div>
+                      
+                </div>
+                <% } %>
+             
+               <div class="tf">
+                 <div class="row layout-inline">
+                   <div class="col">
+                     <p>IVA : <%=iva%></p>
+                   </div>
+                   <div class="col"></div>
+                 </div>
+                  <div class="row layout-inline">
+                   <div class="col">
+                     <p>Total : <%=total%></p>
+                   </div>
+                   <div class="col"></div>
+                 </div>
+              
+              </div>         
+          </div>
+              <button type="submit" class="btn btn-update">Comprar</button>
+            <!-- <a href="/cart/finalizar-compra" class="btn btn-update">Comprar</a> -->
+
+        <% } %>
+        </div>
+      </form>
+    </section>
+
+    <!--====== Footer =======-->
+    <%- include('../partials/footer') %>
+    <!--===== End Footer =======-->
+
+    <%- include('../partials/bootstrap-jq-poppers') %>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/javascripts/cart-event.js"></script> -->
+    
+</body>
+</html>

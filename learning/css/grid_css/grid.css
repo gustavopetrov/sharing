@@ -1,0 +1,67 @@
+/*
+    EXPLICIT GRID = las celdas que declaramos ( las construidas con el cmd grid-template-colmns )
+    IMPLICIT GRID = las celdas que se generan por acción de otros cmd ( celdas creadas indirectamente )
+    AUTO-FILL = mantiene el tamaño original de las celdas, rellena los espacíos en blanco con nuevas celdas fantasmas ( implicitas )
+    AUTO-FIT = expande el contenido de las celdas existentes para rellenar el nuevo espacio vacío generado ( stretch )
+*/
+
+body {
+    margin: 0;
+    background-color: #333;
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 150px 1fr 100px;
+    min-height: 100vh;
+
+
+    /* grid-template-areas: 
+    'header header header'
+    'aside-1 main aside-2'
+    'footer footer footer'; */
+}
+
+.header {
+    background-color: royalblue;
+    grid-column: 1/4;
+
+
+    /* grid-area: header; */
+}
+
+.main {
+    background-color: lightcoral;
+    grid-column: 2/3;
+
+
+    /* grid-area: main; */
+}
+
+.aside-1{
+    grid-column: 1/2;
+
+
+    /* grid-area: aside-1; */
+}
+.aside-2{
+    grid-column: 3/4;
+
+
+    /* grid-area: aside-2; */
+}
+
+/* grid-row: 2/3; puede ir en el aside como en los aside-$ */
+
+
+.aside {
+    background-color: lightsalmon;
+    grid-row: 2/3;
+}
+
+.footer {
+    background-color: lightgreen;
+    grid-column: 1/4;
+
+    
+    /* grid-area: footer; */
+}
+
