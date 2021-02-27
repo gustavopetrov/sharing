@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+}
+
+.alert {
+     position: fixed;
+     margin: 0;
+     top: 0;
+     transform: translateY(-100%);
+     width: 100%;
+     line-height: 3;
+     text-align: center;
+     animation: show 3s;
+}
+
+.alert--ok {
+    background-color: lime;
+}
+.alert--error {
+    background-color: crimson;
+}
+@keyframes show {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    10%,
+    90% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
