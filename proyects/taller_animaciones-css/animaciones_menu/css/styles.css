@@ -1,0 +1,133 @@
+/* 
+    los pseudo-elementos ::before y ::after vienen con la propiedad display:inline
+    por defecto, además siempre necesitan la propiedad content: '' para funcionar.
+
+    position:absolute crea un contexto de bloque por ende no hace falta poner display:block
+
+    Animación menu--x línea 65
+    Animación menu--arrow línea 90
+    Animación menu--chof línea 110
+
+
+    */
+body {
+    margin: 0;
+    background-color: #333;
+}
+
+h1 {
+    color: #faa;
+    text-align: center;
+}
+
+.menus {
+    height: 200px;
+    display: grid;
+    /* border: 1px solid #fff; */
+    grid-template-columns: repeat(3,200px );
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.menu__bar,
+.menu__bar::before,
+.menu__bar::after {
+    position: relative;
+    background-color: #ccc;
+    width: 50px;
+    height: 4px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.menu__bar::before,
+.menu__bar::after {
+    content: '';
+    position: absolute;
+    transform: translateY(15px);
+}
+
+.menu__bar::after {
+    transform: translateY(-15px);
+}
+
+.menu__title {
+    position: absolute;
+    top: 10px;
+}
+
+/* acá empiezo a construir la animación del menu--x  */
+.menu--x:hover .menu__bar {
+    /* Puedo quitar el border radius, agregar un bc-c:red
+    y dejarlo como cuadro de alerta, de ser así, para que
+    sea más estético agrandar el heigh y el width y translateX 3px aprox */
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: 5px solid #ccc;
+}
+
+/* los translateY mueven en el eje Y a las barras
+y el rotate degree las rota sobre su eje para poder cruzarlas */
+.menu--x:hover .menu__bar::after {
+    transform: translateY(23px) rotate(45deg);
+}
+
+.menu--x:hover .menu__bar::before {
+    transform: translateY(23px) rotate(-45deg);
+}
+
+
+/* acá empiezo a construir la animación del menu--arrow  */
+.menu--arrow:hover .menu__bar {
+    transform: rotate(90deg);
+}
+
+
+.menu--arrow:hover .menu__bar::after {
+    transform: scale(0.7) rotate(195deg) translateY(10px) translateX(-8px);
+}
+
+.menu--arrow:hover .menu__bar::before {
+    transform: scale(0.7) rotate(-195deg) translateX(-9px) translateY(-10px);
+}
+
+
+
+
+
+/* acá empiezo a construir la animación del menu-chof  */
+
+
+.menu--chof:hover .menu__bar::after,
+.menu--chof:hover .menu__bar::before {
+    transform: translateY(0);
+}
+
+/* .menu--chof:hover .menu__bar::before {
+    transform: translateY(15px);
+} */
+
+
+
+/* 
+    position:relative => 
+        los elementos se posicionan respecto a su posicion
+        en el DOM, los pseudo-elementos NO tienen posicion en el DOM, por ende
+        no les afecta
+
+    position:absolute => 
+        cuando recibe valores, por ejemplo, top:10px, intenta
+        posicionarse con respecto a un elemento que lo contenga, si no tiene establecido
+        ningún elemento, lo hará por defecto para con el BODY.
+        position absolute, siempre depende de un relativo (u otro pos).
+        Los pseudo elementos en CSS se consideran HIJOS del elemento.   
+*/
