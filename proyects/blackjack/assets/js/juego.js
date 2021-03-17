@@ -1,9 +1,25 @@
-// C = Clubs ( tréboles ) 
-// D = Diamonds ( diamantes )
-// H = Hearts ( corazones )
-// S = Spades ( espadas )
+/* 
+C = Clubs ( tréboles ) 
+D = Diamonds ( diamantes )
+H = Hearts ( corazones )
+S = Spades ( espadas ) 
+*/
 
-let deck = [];
+
+/* 
+(()=>{})();
+Funcion anónima auto-invocada.
+Tiene un nuevo scoope interno, lo que imposibilita ser (no tiene referencia por nombre)
+invocada directamente.
+Al no tener identificador por nombre, dificulta el acceso por consola de chrome a nuestro código (seguridad)
+Obj no definidos en el OBJ GLOBAL WINDOW.
+*/
+
+
+(()=> {
+    'use strict'
+    // 'use strict' -> uso estricto de la sintaxis.
+    let deck = [];
 const tipos = ['C', 'D', 'H', 'S'];
 const especiales = ['A', 'J', 'Q', 'K'];
 
@@ -25,7 +41,7 @@ const crearDeck = () => {
     }
     // mezclo la baraja
     deck = _.shuffle( deck );
-    console.log(deck);
+    // console.log(deck);
     return deck
 }
 
@@ -157,3 +173,5 @@ btnNuevoJuego.addEventListener('click', ()=> {
 //TODO: borrar
 // si el jugador se pasa los 21, la computadora tiene que superar el valor 0
 // si el jugador no se pasa, la computadora tiene que igualar o superar al jugador
+
+})();
